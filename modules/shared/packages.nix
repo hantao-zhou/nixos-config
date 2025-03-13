@@ -24,6 +24,8 @@ in
   pkgs.wget
   pkgs.zip
 
+  pkgs.pandoc
+
   # Encryption and security tools
   pkgs.age
   pkgs.age-plugin-yubikey
@@ -52,6 +54,8 @@ in
 
   # Text and terminal utilities
   pkgs.htop
+  pkgs.tldr
+  pkgs.btop
   pkgs.hunspell
   pkgs.iftop
   pkgs.jetbrains-mono
@@ -67,4 +71,5 @@ in
   # Python packages
   pkgs.python3
   pkgs.virtualenv
+  # pkgs.hyper
 ]

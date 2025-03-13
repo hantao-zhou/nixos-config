@@ -46,6 +46,8 @@ shared-packages ++ [
   xorg.xwininfo # Provides a cursor to click and learn about windows
   xorg.xrandr
 
+  hyper
+
   # File and system utilities
   inotify-tools # inotifywait, inotifywatch - For file system events
   i3lock-fancy-rapid

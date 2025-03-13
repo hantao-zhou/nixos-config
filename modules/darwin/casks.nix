@@ -11,7 +11,8 @@ _:
 
   # Productivity Tools
   "raycast"
-
+  "karabiner-elements"
   # Browsers
   "google-chrome"
+  "microsoft-edge"
 ]
