@@ -86,7 +86,7 @@ let user = "hansgutmann"; in
 
       trackpad = {
         Clicking = true;
-        TrackpadThreeFingerDrag = false;
+        TrackpadThreeFingerDrag = true;
       };
     };
   };

@@ -2,8 +2,10 @@
 
 let 
   tex = pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-basic
-      dvisvgm dvipng # for preview and export as html
+    inherit (pkgs.texlive) scheme-full # 方案选择 scheme-full 以包含所有宏包
+      xetex latexmk # 确保包含 xeCJK
+      ctex # 额外的中文支持
+      dvisvgm dvipng
       wrapfig amsmath ulem hyperref capt-of;
   };
 in
@@ -68,8 +70,15 @@ in
   pkgs.zsh-powerlevel10k
   tex # The `tex` package defined above
 
+  # Additional fonts for XeLaTeX (Chinese/CJK support)
+  pkgs.wqy_zenhei      # WenQuanYi Zen Hei
+  pkgs.source-han-sans # Source Han Sans (Noto Sans CJK)
+  pkgs.source-han-serif # Source Han Serif (Noto Serif CJK)
+  pkgs.fontconfig      # Font cache manager (ensures fonts are recognized)
   # Python packages
   pkgs.python3
   pkgs.virtualenv
   # pkgs.hyper
+
+  # Software development tools
 ]

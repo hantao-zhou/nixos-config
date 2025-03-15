@@ -63,7 +63,7 @@ shared-packages ++ [
 
   # PDF viewer
   zathura
-
+  scribus
   # Music and entertainment
   spotify
 ]

@@ -15,4 +15,6 @@ _:
   # Browsers
   "google-chrome"
   "microsoft-edge"
+  "skim"
+  # "mactex"
 ]

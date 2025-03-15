@@ -13,4 +13,9 @@
   # ".emacs.d/init.el" = {
   #   text = builtins.readFile ../shared/config/emacs/init.el;
   # };
+
+  # Correct way to add local fonts in Home Manager
+#   ".local/share/fonts/qlishu.ttf" = {
+#   source = ../shared/fonts/QLiShu.ttf;
+# };
 }
