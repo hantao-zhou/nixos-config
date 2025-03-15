@@ -15,7 +15,7 @@
   # };
 
   # Correct way to add local fonts in Home Manager
-#   ".local/share/fonts/qlishu.ttf" = {
-#   source = ../shared/fonts/QLiShu.ttf;
-# };
+  # ".nix-profile/share/fonts/truetype/qlishu.ttf" = {
+  # source = ../shared/fonts/QLiShu.ttf;
+  # };
 }
