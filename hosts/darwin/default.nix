@@ -11,23 +11,23 @@ let user = "hansgutmann"; in
      agenix.darwinModules.default
   ];
   fonts.packages = with pkgs; [
-    (pkgs.stdenv.mkDerivation {
-      name = "my-custom-font";
-      version = "1.0";
-      src = ./fonts; # 你的 TTF/OFT 字体文件所在的目录
+  (stdenv.mkDerivation {
+    pname = "my-custom-font";
+    version = "1.0";
+    src = builtins.path { path = ./fonts; };  # Ensures proper inclusion
 
-      installPhase = ''
-        mkdir -p $out/share/fonts
-        cp *.ttf $out/share/fonts/
-      '';
+    buildCommand = ''
+      install -m444 -Dt $out/share/fonts/truetype $src/*.ttf
+    '';
 
-      meta = with pkgs.lib; {
-        description = "My Custom Font";
-        license = licenses.mit;
-        platforms = platforms.all;
-      };
-    })
-  ];
+    meta = with lib; {
+      description = "My Custom Font";
+      license = licenses.mit;
+      platforms = platforms.all;
+    };
+  })
+];
+
   # Setup user, packages, programs
   nix = {
     package = pkgs.nix;

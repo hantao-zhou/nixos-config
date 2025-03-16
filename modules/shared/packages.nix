@@ -79,6 +79,6 @@ in
   pkgs.python3
   pkgs.virtualenv
   # pkgs.hyper
-
+  pkgs.typst
   # Software development tools
 ]
