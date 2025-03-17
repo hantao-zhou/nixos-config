@@ -80,5 +80,6 @@ in
   pkgs.virtualenv
   # pkgs.hyper
   pkgs.typst
+  pkgs.marp-cli
   # Software development tools
 ]

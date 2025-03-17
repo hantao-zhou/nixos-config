@@ -1,12 +1,13 @@
 { config, pkgs, lib, ... }:
 
-let name = "hansgutmann";
-    user = "hansgutmann";
-    email = "hantaozhouted@gmail.com"; 
-    
-  in
+let
+  name = "hansgutmann";
+  user = "hansgutmann";
+  email = "hantaozhouted@gmail.com";
+
+in
 {
-  
+
   # Shared shell configuration
   zsh = {
     enable = true;
@@ -14,56 +15,81 @@ let name = "hansgutmann";
     cdpath = [ "~/.local/share/src" ];
     plugins = [
       {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
-          name = "powerlevel10k-config";
-          src = lib.cleanSource ./config;
-          file = "p10k.zsh";
+        name = "powerlevel10k-config";
+        src = lib.cleanSource ./config;
+        file = "p10k.zsh";
       }
     ];
     initExtraFirst = ''
-      if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
-        . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-        . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-      fi
+            if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+              . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+              . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+            fi
 
-      # Define variables for directories
-      export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
-      export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
-      export PATH=$HOME/.local/share/bin:$PATH
+            # Define variables for directories
+            export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
+            export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
+            export PATH=$HOME/.local/share/bin:$PATH
 
-      # Remove history data we don't want to see
-      export HISTIGNORE="pwd:ls:cd"
+            # Remove history data we don't want to see
+            export HISTIGNORE="pwd:ls:cd"
 
-      # Ripgrep alias
-      alias search=rg -p --glob '!node_modules/*'  $@
+            # Ripgrep alias
+            alias search=rg -p --glob '!node_modules/*'  $@
 
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
+            # Emacs is my editor
+            export ALTERNATE_EDITOR=""
+            export EDITOR="emacsclient -t"
+            export VISUAL="emacsclient -c -a emacs"
 
-      e() {
-          emacsclient -t "$@"
-      }
+            e() {
+                emacsclient -t "$@"
+            }
+            # tree with level
 
-      # nix shortcuts
-      shell() {
-          nix-shell '<nixpkgs>' -A "$1"
-      }
+            ufind() {
+                find . -name "$1"
+            }
+            # nix shortcuts
+            shell() {
+                nix-shell '<nixpkgs>' -A "$1"
+            }
 
-      # pnpm is a javascript package manager
-      alias pn=pnpm
-      alias px=pnpx
+            # pnpm is a javascript package manager
+            alias pn=pnpm
+            alias px=pnpx
 
-      # Use difftastic, syntax-aware diffing
-      alias diff=difft
+            # Use difftastic, syntax-aware diffing
+            alias diff=difft
 
-      # Always color ls and group directories
-      alias ls='ls --color=auto'
+            # Always color ls and group directories
+            alias ls='ls --color=auto'
+            alias ll='ls -lh'
+            alias la='ls -a'
+            alias lla='ls -la'
+            alias l='ls -CF'
+
+            alias grep='grep --color=auto'
+            alias fgrep='fgrep --color=auto'
+            alias egrep='egrep --color=auto'
+
+            alias mm='micromamba'
+            alias ..='cd ..'
+            alias ...='cd ../..'
+            alias ....='cd ../../..'
+            alias .....='cd ../../../..'
+            alias ......='cd ../../../../..'
+            alias .......='cd ../../../../../..'
+
+            alias ta='tmux attach -t'
+            alias tl='tmux list-sessions'
+            alias tn='tmux new-session -s'
+            alias ts='tmux switch -t'
     '';
   };
 
@@ -78,7 +104,7 @@ let name = "hansgutmann";
     extraConfig = {
       init.defaultBranch = "main";
       core = {
-	    editor = "vim";
+        editor = "vim";
         autocrlf = "input";
       };
       commit.gpgsign = true;
@@ -194,8 +220,8 @@ let name = "hansgutmann";
 
       let g:airline_theme='bubblegum'
       let g:airline_powerline_fonts = 1
-      '';
-     };
+    '';
+  };
 
   alacritty = {
     enable = true;
@@ -297,7 +323,7 @@ let name = "hansgutmann";
       {
         plugin = power-theme;
         extraConfig = ''
-           set -g @tmux_power_theme 'gold'
+          set -g @tmux_power_theme 'gold'
         '';
       }
       {
@@ -368,6 +394,6 @@ let name = "hansgutmann";
       bind-key -T copy-mode-vi 'C-k' select-pane -U
       bind-key -T copy-mode-vi 'C-l' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
-      '';
-    };
+    '';
+  };
 }
