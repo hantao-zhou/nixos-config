@@ -16,5 +16,6 @@ _:
   "google-chrome"
   "microsoft-edge"
   "skim"
+  # "zotero"
   # "mactex"
 ]

@@ -77,9 +77,11 @@ in
   pkgs.fontconfig      # Font cache manager (ensures fonts are recognized)
   # Python packages
   pkgs.python3
+  pkgs.black
   pkgs.virtualenv
   # pkgs.hyper
   pkgs.typst
   pkgs.marp-cli
+  pkgs.thefuck
   # Software development tools
 ]

@@ -64,6 +64,8 @@ shared-packages ++ [
   # PDF viewer
   zathura
   scribus
+
+  zotero
   # Music and entertainment
   spotify
 ]
