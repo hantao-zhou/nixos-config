@@ -83,5 +83,6 @@ in
   pkgs.typst
   pkgs.marp-cli
   pkgs.thefuck
+  pkgs.zotero
   # Software development tools
 ]
